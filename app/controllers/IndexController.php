@@ -6,16 +6,6 @@ namespace app\controllers;
 
 class IndexController extends BaseController
 {
-    public function indexAction()
-    {
-        return 'INDEX ACTION';
-    }
-
-    public function infoAction()
-    {
-        phpinfo();
-    }
-
     public function getAction()
     {
         return [

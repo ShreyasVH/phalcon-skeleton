@@ -2,12 +2,8 @@
 
 use Phalcon\Mvc\Micro\Collection;
 
-//Default Route
 $default = new Collection();
 $default->setHandler('app\controllers\IndexController', true);
-
-$default->get('/', 'indexAction');
-$default->get('/info', 'infoAction');
 
 $default->get('/api', 'getAction');
 $default->post('/api', 'postAction');
@@ -17,15 +13,8 @@ $default->delete('/api', 'deleteAction');
 $application->mount($default);
 
 $application->after(function() use($application) {
-    if($application->request->getURI() == '/info')
-    {
-        $output_content = $application->getReturnedValue();
-    }
-    else
-    {
-        $application->response->setContentType('application/json', 'UTF-8');
-        $output_content = json_encode($application->getReturnedValue(), JSON_UNESCAPED_SLASHES);
-    }
+    $application->response->setContentType('application/json', 'UTF-8');
+    $output_content = json_encode($application->getReturnedValue(), JSON_UNESCAPED_SLASHES);
 
     $application->response->setContent($output_content);
     $application->response->send();
