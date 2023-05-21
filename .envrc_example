@@ -1,4 +1,4 @@
 # php path
-export PATH="/home/shreyas/programs/php/8.2.5/bin:$PATH"
+export PATH=
 
-export PORT=22001
+export PORT=
